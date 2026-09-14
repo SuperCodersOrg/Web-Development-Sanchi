@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses page</title>
+    <!-- <link rel="stylesheet" href="styles.css"/> -->
+     <style>
+        #courses{
+            margin: 20px;
+            padding: 20px;
+            background-color: white;
+        }
+
+        #outerCourses{
+           display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        #outerCourses > div {
+            padding: 20px;
+            width: 50%;
+            margin-bottom: 20px;
+            border: 1px solid rgb(210, 210, 210);
+            background-color: rgb(248, 249, 252);
+        }
+
+        #courses > h4{
+            font-weight: 400;
+            font-size: 30px;
+        }
+
+        #courses > h2{
+            font-size: 22px;
+            font-weight: 500;
+            color: rgb(24,48,80);
+        }   
+     </style>
+</head>
+<body>
+    <section id="courses">
+        <h4>Available Courses: </h4>
+        <div>
+            <div id="outerCourses">
+                <div>
+                    <h2>BCA (Bachelors of Computer Applications)</h2>
+                    <h4>Duration: 3 Years</h4>
+                    <h4>Departement: Computer Applications</h4>
+                </div>
+                <div>
+                    <h2>B.Tech CSE (Bachelors of Technology in Computer-Science and Engineering)</h2>
+                    <h4>Duration: 4 Years</h4>
+                    <h4>Departement: Computer Science and Engineering</h4>
+                </div>
+            </div>
+            <div id="outerCourses">
+                <div>
+                    <h2>BBA (Bachelor of Business Administration)</h2>
+                    <h4>Duration: 3 Years</h4>
+                    <h4>Departement: Management Studies</h4>
+                </div>
+                <div>
+                    <h2>B.Tech AI & ML (Bachelor of Technology in Artificial Intelligence and Machine Learning)</h2>
+                    <h4>Duration: 4 Years</h4>
+                    <h4>Artificial Intelligence and Machine Learning</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

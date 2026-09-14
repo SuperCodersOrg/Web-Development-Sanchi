@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    <!-- <link rel="stylesheet" href="styles.css"/> -->
+    <style>
+        body{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            background-color: rgb(244,247,2549);
+            color: rgb(45,55,65);
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        #homePage{
+            margin: 20px;
+            padding: 20px;
+            text-align: center;
+            background-color: white;
+        }   
+
+        h1{
+            margin: 0px;
+            text-align: center;
+            font-size: 40px;
+            font-weight: 400;
+            color: rgb(24,48,80);
+        }
+
+        #home{
+            text-align: center;
+            font-size: 20px;
+            font-weight: 400;
+            color: rgb(42,157,143);
+            line-height: 1.6;
+        }
+
+        #homeList{
+            font-size: 20px;
+            text-align: left;
+            line-height: 1.8;
+            display: inline-block;
+        }
+
+        #about{
+            margin: 20px;
+            padding: 30px;
+            line-height: 1.6;
+            background-color: white;
+        }
+
+        #about > div{
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        #about > div > div{
+            width: 50%;
+            padding: 20px;
+        }
+
+        #courses{
+            margin: 20px;
+            padding: 20px;
+            background-color: white;
+        }
+
+        #outerCourses{
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        #outerCourses > div {
+            padding: 20px;
+            width: 50%;
+            margin-bottom: 20px;
+            border: 1px solid rgb(210, 210, 210);
+            background-color: rgb(248, 249, 252);
+        }
+
+        #courses > h4{
+            font-weight: 400;
+            font-size: 30px;
+        }
+
+        #courses > h2{
+            font-size: 22px;
+           font-weight: 500;
+            color: rgb(24,48,80);
+        }  
+
+        #student_details{
+            margin: 20px;
+            padding: 10px;
+            background-color: white;
+            line-height: 1.8;
+        }
+
+        #student_details > div{
+            margin: 15px 0;
+        }
+
+        #student_details h2{
+           text-align: center;
+           font-size: 30px;
+            font-weight: 400;
+        }
+
+        #contact{
+            margin: 20px;
+            padding: 30px;
+            background-color: white;
+            line-height: 1.7;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        #contact > div{
+            padding: 15px;
+        }
+
+        #facilities{
+            margin: 20px;
+            padding: 20px;
+            background-color: white;    
+        }
+
+        #facility{
+            display: grid;
+            padding: 20px;
+            gap: 10px;
+            grid-template-columns: repeat(2,1fr);
+        } 
+
+        #facilities > h2{
+            font-weight: 400;
+            text-align: center;
+            font-size: 30px;
+        }
+
+        #facility > h3{
+            font-weight: 400;
+            font-size: 20px;
+        }
+
+        #facilities > div{
+            padding: 20px;
+             border: 1px solid rgb(200,225,222);
+            background-color: rgb(224,242,241);
+        }
+
+        #facility > div{
+            padding: 20px;
+            border: 1px solid rgb(210,210,210);
+            background-color: rgba(248, 249, 252, 0.946);
+        }
+
+        #placement{
+            margin: 0;  
+             padding: 0;
+            background-color: white;
+            line-height: 1.6;
+        }
+
+        #placement > div{
+            font-weight: 400;
+            background-color: rgb(248,249,252);
+            border: 1px solid rgb(210,210,210);
+            margin: 20px;
+            padding: 30px;
+            font-size: 16px;
+        }
+
+        #placement > ul{
+            line-height: 1.5;
+        }
+
+        #placement > h2{
+            font-weight: 400;
+            text-align: center;
+            font-size: 30px;
+        }
+
+        #unknown{
+            margin: 20px;
+            padding: 20px;
+            background-color: rgb(255,255,255);
+            text-align: center;
+            display: none;
+        }
+
+        #unknown > h3{
+           font-size: 35px;
+            font-weight: 500;
+            color: rgb(190,50,50);
+        }
+
+        #unknown > p{
+            font-size: 20px;
+        }
+
+        #register{
+            margin: 20px;
+            padding: 30px;
+            background-color: white;
+        }
+
+        #register h3{
+            text-align: center;
+            font-weight: 400;
+            color: rgb(90,90,90);
+        }
+
+        #register form{
+            margin-top: 25px;
+        }
+
+        #register label{
+            display: block;
+            margin-top: 15px;
+            color: rgb(2,48,80);
+        }
+
+        #register button{
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            background-color: rgb(42,157,143);
+            color: white;
+        }
+
+        #register input,
+        #register select{
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid rgb(210,210,210);
+            background-color: rgb(248,249,252);
+        }
+
+        #register h3:nth-child(2){
+            font-size: 16px;
+            color: rgb(90,90,90);
+        }
+
+        #bba,#bca,#btech,
+        #ai{
+            margin: 20px;
+            padding: 20px;
+            background-color: white;
+            line-height: 1.7;
+        }
+
+        #bba,#bca,#btech,
+        #ai h3{
+            font-weight: 400;
+            margin: 15px 0;
+            color: rgb(24,48,80);
+        }
+
+        #bba,#bca,#btech,
+        #ai > div{
+            padding: 20px;
+            margin-top: 20px;
+            background-color: rgb(248,249,252);
+            border: 1px solid rgb(210,210,210);
+            }
+
+        #bba,#bca,#btech,
+        #ai li{
+            margin: 8px 0;
+    }   
+     </style>
+</head>
+<body>
+    <section id="wholePage">
+    <h1>ABC College</h1>
+    <section id="homePage">
+        <h1 style="color: cadetblue;">Welcome to our college!</h1>
+        <div id="home">
+             <h2>Empowering Students Throught Education, Innovation and Excellence</h2>
+        </div>
+        <div id="home">
+            <h4>ABC College is a modern educational institution focused on providing quality education, practical learning, and career opportunities to students.</h4>
+        </div>
+        
+        <ul type="disc" id="homeList">
+            <li>Established: 2015</li>
+            <li>Location: Mohali,Chandigarh</li>
+            <li>Total Students: 2000+</li>
+            <li>Courses Offered: 4</li>
+            <li>Placement Assistance: Available</li>
+        </ul>
+    </section>
+    
+
+    <section id="about">
+        <h3>Private Education Institution</h3>
+        <div>
+            <div>Description:</br>
+                ABC College was established in 2020 with the vision of providing students with quality education and practical skills. The college focuses on technology, management, innovation, and overall student development.
+            </div>
+            <div>Vision:</br>
+                To become a leading institution that prepares students for successful careers and responsible citizenship.
+            </div>
+        </div>
+        <ul>
+            <li>Provide quality education</li>
+            <li>Encourage practical learning</li>
+            <li>Develop technical and professional skills</li>
+            <li>Promote innovation and creativity</li>
+            <li>Prepare students for industry requirements</li>
+        </ul>
+    </section>
+
+    <section id="courses">
+        <h4>Available Courses: </h4>
+        <div>
+            <div id="outerCourses">
+                <div>
+                    <h2>BCA (Bachelors of Computer Applications)</h2>
+                    <h4>Duration: 3 Years</h4>
+                    <h4>Departement: Computer Applications</h4>
+                </div>
+                <div>
+                    <h2>B.Tech CSE (Bachelors of Technology in Computer-Science and Engineering)</h2>
+                    <h4>Duration: 4 Years</h4>
+                    <h4>Departement: Computer Science and Engineering</h4>
+                </div>
+            </div>
+            <div id="outerCourses">
+                <div>
+                    <h2>BBA (Bachelor of Business Administration)</h2>
+                    <h4>Duration: 3 Years</h4>
+                    <h4>Departement: Management Studies</h4>
+                </div>
+                <div>
+                    <h2>B.Tech AI & ML (Bachelor of Technology in Artificial Intelligence and Machine Learning)</h2>
+                    <h4>Duration: 4 Years</h4>
+                    <h4>Artificial Intelligence and Machine Learning</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="student_details">
+        <h2>Student Information</h2>
+
+        <div>Total Students: 1,250</div>
+        <div>Active Batches: 12</div>
+        <div>Average Batch Size: 100-110</div>
+
+        <div>
+            <h4>Academic Sessions: </h4>
+            <ul type="disc">
+                <li>2024-25</li>
+                <li>2025-26</li>
+                <li>2026-27</li>
+            </ul>
+        </div>
+
+        <div>
+            <h4>Students By Course: </h4>
+            <ul type="disc">
+                <li>BCA: 320</li>
+                <li>B.Tech CSE: 410</li>    
+                <li>B.Tech AI&ML: 280</li>
+                <li>BBA: 240</li>
+            </ul>
+        </div>
+
+        <div>
+            <h4>Student Support:</h4>
+            <ul type="disc">
+                <li>Academic Counseling</li>
+                <li>Career Guidance</li>    
+                <li>Internship Assistance</li>
+                <li>Technical Workshops</li>
+            </ul>
+        </div>
+    </section>
+
+
+    <section id="contact">
+        <div>
+            <div>Phone: +91 98765 43210</div>
+            <div>Email: info@abccollege.edu</div>
+        </div>
+        <div>
+            <div>Admissions Email: admissions@abccollege.edu</div>
+            <div>Location: ABC College Road, Mohali, Chandigarh – 132103</div>
+        </div>
+        <div><pre>Office Hours:
+                Monday – Friday
+                9:00 AM – 5:00 PM</pre>
+        </div>
+        <div><pre>Saturday: 9:00 AM - 1:00 PM</pre>
+        </div>
+        <div><pre>Sunday: Closed</pre>
+        </div>
+    </section>
+
+
+    <section id="facilities">
+        <h2>College Facilities:</h2>
+        <div id="facility">
+        <div>
+            <h3>Computer Laboratories</h3>
+            <p>Well-equipped computer labs with modern systems and high-speed internet.</p>
+        </div>
+        <div>
+            <h3>Central Library</h3>
+            <p>A large collection of academic books, reference materials, journals, and digital resources.</p>
+        </div>
+        <div>
+            <h3>Smart Classrooms</h3>
+            <p>Technology-enabled classrooms with projectors and digital learning facilities.</p>
+        </div>
+        <div>
+            <h3>Wi-Fi Campus</h3>
+            <p>High-speed internet connectivity available across the campus.</p>
+        </div>
+        <div>
+            <h3>Seminar Hall</h3>
+            <p>A modern seminar hall for workshops, guest lectures, presentations, and college events.</p>
+        </div>
+        <div>
+            <h3>Sports Ground</h3>
+            <p>Facilities for outdoor sports and recreational activities.</p>
+        </div>
+        <div>
+            <h3>Cafeteria</h3>
+            <p>A campus cafeteria providing snacks, beverages, and meals for students.</p>
+        </div>
+        <div>
+            <h3>Hostel</h3>
+            <p>Separate hostel accommodation with basic student facilities.</p>
+        </div>
+        <div>
+            <h3>Transportation</h3>
+            <p>College bus services available on selected routes.</p>
+        </div>
+        <div>
+            <h3>Medical Room</h3>
+            <p>Basic first-aid and medical assistance available on campus.</p>
+        </div>
+        </div>
+    </section>
+
+    <section id="placement">
+        <h2>Placements</h2>
+        <div>
+            <div>Placement Cell: Active</div>
+            <div>Placement Assistance: Available</div>
+            <div>Internship Assistance: Available</div>
+            <div>Highest Package: ₹12 LPA</div>
+            <div>Average Package: ₹5.2 LPA</div>
+            <div>Placement Rate: 82%</div>
+            <div>Companies Visited: 45+</div>
+            <div>Students Placed: 410+</div>
+        </div>
+        <div>
+            <div>Placement Activities: </div>
+            <ul type="disc">
+                <li>Campus Recruitment</li>
+                <li>Technical Interviews</li>
+                <li>Aptitude Tests</li>
+                <li>Resume Building</li>
+                <li>Mock Interviews</li>
+                <li>Career Counseling</li>
+                <li>Industry Workshops</li>
+            </ul>
+        </div>
+        <div>
+            <div>Top Recruiters: </div>
+            <ul type="disc">
+                <li>TCS</li>
+                <li>Infosys</li>
+                <li>Wipro</li>
+                <li>Accenture</li>
+                <li>Camgemini</li>
+                <li>HCL Technologies</li>
+                <li>TechNova Solutions</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="register">
+        <h3>Registeration Open</h3>
+        <h3>Students can register for admission by providing their basic academic and personal information.</h3>
+        <form method="POST" action="#">
+            <label for="name">Student's Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name"/>
+
+            <label for="name">Student's Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name"/>
+
+            <label for="email">Email-address</label>
+            <input type="email" id="email" name="email" placeholder="Enter your e-mail"/>
+
+            <label for="number">Contact</label>
+            <input type="number" id="number" name="number" placeholder="Enter your ph.number"/>
+
+            <label for="date">Date Of Birth</label>
+            <input type="date" id="date" name="date" placeholder="Enter your d-o-b"/>
+
+            <label for="course">Course</label>
+            <input type="text" id="course" name="course" placeholder="Enter your course"/>
+
+            <label for="batch">Batch No.</label>
+            <input type="number" id="batch" name="batch" placeholder="Enter your batch"/>
+
+            <label for="gender">Gender</label>
+            <select id="gender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+
+            <label for="address">Address</label>
+            <input type="text" id="address" name="address" placeholder="Enter your address"/>
+
+            <button id="submit">Register your details</button>
+        </form>
+    </section>
+
+    </section> 
+</body>
+</html>
