@@ -47,16 +47,6 @@ app.get('/placement',(req,res)=>{
     res.sendFile(path.join(__dirname+'/../frontend/placement.html'));
 });
 
-// app/get('/about',(req,res)=>{
-//     let data=fs.readFileSync('../frontend/about.html','utf8');
-//     res.send(data);
-// });
-
-// app/get('/about',(req,res)=>{
-//     let data=fs.readFileSync('../frontend/about.html','utf8');
-//     res.send(data);
-// });
-
 app.listen(port,()=>{
     console.log(`Server is running on http://localhost:${port}`);
 });
