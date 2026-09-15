@@ -1,0 +1,29 @@
+{
+    "title": "Placements",
+    "placementCell": "Active",
+    "placementAssistance": "Available",
+    "internshipAssistance": "Available",
+    "highestPackage": "₹12 LPA",
+    "averagePackage": "₹5.2 LPA",
+    "placementRate": "82%",
+    "companiesVisited": "45+",
+    "studentsPlaced": "410+",
+    "placementActivities": [
+        "Campus Recruitment",
+        "Technical Interviews",
+        "Aptitude Tests",
+        "Resume Building",
+        "Mock Interviews",
+        "Career Counseling",
+        "Industry Workshops"
+    ],
+    "topRecruiters": [
+        "TCS",
+        "Infosys",
+        "Wipro",
+        "Accenture",
+        "Camgemini",
+        "HCL Technologies",
+        "TechNova Solutions"
+    ]
+}

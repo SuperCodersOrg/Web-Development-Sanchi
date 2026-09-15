@@ -1,6 +1,5 @@
 let file_sys = require('fs');
 let file_path = require('path');
-let arr2 = [];
 
 const source = process.argv[2];
 const ext_input = process.argv[3];

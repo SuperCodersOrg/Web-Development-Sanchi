@@ -1,0 +1,11 @@
+{
+    "phone": "+91 98765 43210",
+    "email": "info@abccollege.edu",
+    "admissionsEmail": "admissions@abccollege.edu",
+    "location": "ABC College Road, Mohali, Chandigarh – 132103",
+    "officeHours": {
+        "mondayToFriday": "9:00 AM - 5:00 PM",
+        "saturday": "9:00 AM - 1:00 PM",
+        "sunday": "Closed"
+    }
+}

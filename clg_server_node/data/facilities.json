@@ -1,0 +1,45 @@
+{
+    "title": "College Facilities",
+    "facilities": [
+        {
+            "name": "Computer Laboratories",
+            "description": "Well-equipped computer labs with modern systems and high-speed internet."
+        },
+        {
+            "name": "Central Library",
+            "description": "A large collection of academic books, reference materials, journals, and digital resources."
+        },
+        {
+            "name": "Smart Classrooms",
+            "description": "Technology-enabled classrooms with projectors and digital learning facilities."
+        },
+        {
+            "name": "Wi-Fi Campus",
+            "description": "High-speed internet connectivity available across the campus."
+        },
+        {
+            "name": "Seminar Hall",
+            "description": "A modern seminar hall for workshops, guest lectures, presentations, and college events."
+        },
+        {
+            "name": "Sports Ground",
+            "description": "Facilities for outdoor sports and recreational activities."
+        },
+        {
+            "name": "Cafeteria",
+            "description": "A campus cafeteria providing snacks, beverages, and meals for students."
+        },
+        {
+            "name": "Hostel",
+            "description": "Separate hostel accommodation with basic student facilities."
+        },
+        {
+            "name": "Transportation",
+            "description": "College bus services available on selected routes."
+        },
+        {
+            "name": "Medical Room",
+            "description": "Basic first-aid and medical assistance available on campus."
+        }
+    ]
+}

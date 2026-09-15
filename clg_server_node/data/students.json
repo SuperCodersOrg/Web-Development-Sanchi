@@ -1,0 +1,23 @@
+{
+    "title": "Student Information",
+    "totalStudents": "1,250",
+    "activeBatches": 12,
+    "averageBatchSize": "100-110",
+    "academicSessions": [
+        "2024-25",
+        "2025-26",
+        "2026-27"
+    ],
+    "studentsByCourse": {
+        "BCA": 320,
+        "B.Tech CSE": 410,
+        "B.Tech AI&ML": 280,
+        "BBA": 240
+    },
+    "studentSupport": [
+        "Academic Counseling",
+        "Career Guidance",
+        "Internship Assistance",
+        "Technical Workshops"
+    ]
+}

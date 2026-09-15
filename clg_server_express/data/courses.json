@@ -1,0 +1,29 @@
+{
+    "title": "Available Courses",
+    "courses": [
+        {
+            "name": "BCA",
+            "fullName": "Bachelors of Computer Applications",
+            "duration": "3 Years",
+            "department": "Computer Applications"
+        },
+        {
+            "name": "B.Tech CSE",
+            "fullName": "Bachelors of Technology in Computer-Science and Engineering",
+            "duration": "4 Years",
+            "department": "Computer Science and Engineering"
+        },
+        {
+            "name": "BBA",
+            "fullName": "Bachelor of Business Administration",
+            "duration": "3 Years",
+            "department": "Management Studies"
+        },
+        {
+            "name": "B.Tech AI & ML",
+            "fullName": "Bachelor of Technology in Artificial Intelligence and Machine Learning",
+            "duration": "4 Years",
+            "department": "Artificial Intelligence and Machine Learning"
+        }
+    ]
+}

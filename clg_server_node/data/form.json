@@ -1,0 +1,57 @@
+{
+    "title": "Registration Open",
+    "description": "Students can register for admission by providing their basic academic and personal information.",
+    "fields": [
+        {
+            "label": "Student's Name",
+            "type": "text",
+            "id": "name",
+            "placeholder": "Enter your name"
+        },
+        {
+            "label": "Email-address",
+            "type": "email",
+            "id": "email",
+            "placeholder": "Enter your e-mail"
+        },
+        {
+            "label": "Contact",
+            "type": "number",
+            "id": "number",
+            "placeholder": "Enter your ph.number"
+        },
+        {
+            "label": "Date Of Birth",
+            "type": "date",
+            "id": "date"
+        },
+        {
+            "label": "Course",
+            "type": "text",
+            "id": "course",
+            "placeholder": "Enter your course"
+        },
+        {
+            "label": "Batch No.",
+            "type": "number",
+            "id": "batch",
+            "placeholder": "Enter your batch"
+        },
+        {
+            "label": "Gender",
+            "type": "select",
+            "id": "gender",
+            "options": [
+                "Male",
+                "Female"
+            ]
+        },
+        {
+            "label": "Address",
+            "type": "text",
+            "id": "address",
+            "placeholder": "Enter your address"
+        }
+    ],
+    "buttonText": "Register your details"
+}
