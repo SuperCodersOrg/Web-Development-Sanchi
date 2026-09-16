@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home page</title>
     <!-- <link rel="stylesheet" href="styles.css"/> -->
-    <!-- <style>
+     <style>
         body{
             box-sizing: border-box;
             margin: 0;
@@ -44,7 +44,8 @@
             line-height: 1.8;
             display: inline-block;
         }
-
+    </style>
+    <!-- <style>
         #about{
             margin: 20px;
             padding: 30px;
@@ -277,9 +278,64 @@
         #ai li{
             margin: 8px 0;
     }   
-     </style> -->
+     </style> --> 
 </head>
-<body id="home">
-    
+<body>
+    <header>
+        <nav>
+            <ul id="list">
+                <li id="home">Home</li>
+                <li id="about">About</li>
+                <li id="contact">Contact</li>
+                <li id="contact">Courses</li>
+                <li id="courses">Placements</li>
+                <li id="facilities">Facilities</li>
+                <li id="students">Students Details</li>
+            </ul>
+        </nav>
+    </header>
+    <div id="homePage">
+
+    </div>
+
+    <!-- <script>
+        let homepage=document.getElementById("homePage");
+        let list=document.getElementById("list");
+        let url='http://localhost:1300';
+        list.addEventListener("click",(event)=>{
+            if(event.target.id==='home'){
+               fetch('http://localhost:1300/home')
+                .then(function(response){
+                    console.log(response.json);
+                    console.log("before parse data");
+                    return response.json();
+                })
+                .then((data)=>{
+                    // let page=home;
+                    // console.log(page);
+                    homepage.innerHTML +=`
+                        <h1>${data.collegeName}</h1>
+                        <section id="homePage">
+                            <h1 style="color: cadetblue;">${data.welcomeMessage}</h1>
+                            <div id="home">
+                            <h2>${data.tagline}</h2>
+                        </div>
+                        <div id="home">
+                            <h4>${data.description}</h4>
+                        </div>
+        
+                        <ul type="disc" id="homeList">
+                            <li>Established: ${data.established}</li>
+                            <li>Location: ${data.location}</li>
+                            <li>Total Students: ${data.totalStudents}</li>
+                            <li>Courses Offered: ${data.coursesOffered}</li>
+                            <li>Placement Assistance: ${data.placementAssistance}</li>
+                        </ul>
+                    `;
+                })
+            }
+        })
+    </script> -->
+    <script src="./script.js"></script>
 </body>
 </html>

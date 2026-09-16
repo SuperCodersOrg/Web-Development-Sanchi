@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About page</title>
     <!-- <link rel="stylesheet" href="styles.css"/> -->
-    <!-- <style>
+    <style>
         #about{
             margin: 20px;
             padding: 30px;
@@ -23,9 +23,60 @@
             width: 50%;
             padding: 20px;
         }
-    </style> -->
+    </style>
 </head>
-<body id="about">
-    
+<body>
+    <header>
+        <nav>
+            <ul id="list">
+                <li id="home">Home</li>
+                <li id="about">About</li>
+                <li id="contact">Contact</li>
+                <li id="contact">Courses</li>
+                <li id="courses">Placements</li>
+                <li id="facilities">Facilities</li>
+                <li id="students">Students Details</li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="aboutPage">
+
+    </div>
+
+    <!-- <script>
+        let aboutpage=document.getElementById("aboutPage");
+        let list=document.getElementById("list");
+        let url='http://localhost:1300';
+        list.addEventListener("click",(event)=>{
+            if(event.target.id==='about'){
+               fetch('http://localhost:1300/about')
+                .then(function(response){
+                    console.log(response.json);
+                    console.log("before parse data");
+                    return response.json();
+                })
+                .then((data)=>{
+                    aboutpage.innerHTML +=`
+                        <h3>${data.type}</h3>
+                        <div>
+                            <div>Description:</br>
+                                ${data.description}
+                            </div>
+                            <div>Vision:</br>
+                            ${data.vision}
+                            </div>
+                        </div>
+                        <ul>
+                            ${data.objectives.map((items)=>{
+                                return `<li>${items}</li>`;
+                            }).join("")}
+                        </ul>
+                    `;
+                })
+            }
+        })
+    </script> -->
+    <script src="./script.js"></script>
 </body>
 </html>
