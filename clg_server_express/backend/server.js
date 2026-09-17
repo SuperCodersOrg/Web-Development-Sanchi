@@ -1,12 +1,15 @@
 const express=require('express');
 const fs=require('fs');
 let path=require('path');
+const cors=require('cors');
 const app=express();
 const port=2300;
 
 app.use(express.json());
+app.use(cors());
 
 app.get('/home',(req,res)=>{
+
     let data=fs.readFileSync('../data/home.json','utf8');
     res.send(data);
     // res.sendFile(path.join(__dirname+'/../frontend/home.html'));
@@ -30,10 +33,13 @@ app.get('/courses',(req,res)=>{
     // res.sendFile(path.join(__dirname+'/../frontend/courses.html'));
 });
 
-// app.get('/courses/:course',(req,res)=>{
-//     console.log(req.params.course);
-//     res.sendFile(path.join(__dirname+`/../frontend/${req.params.course}.html`));
-// });
+app.get('/courses/:course',(req,res)=>{
+    console.log(req.params.course);
+    // console.log(req);
+    let data=fs.readFileSync(`../data/${req.params.course}.json`,'utf8');
+    res.send(data);
+    // res.sendFile(path.join(__dirname+`/../frontend/${req.params.course}.html`));
+});
 
 app.get('/facilities',(req,res)=>{
     let data=fs.readFileSync('../data/facilities.json','utf8');
@@ -53,10 +59,13 @@ app.get('/placement',(req,res)=>{
     // res.sendFile(path.join(__dirname+'/../frontend/placement.html'));
 });
 
-// app.post('/login',(req,res)=>{
-//     console.log(req.body);
-//     res.send('login page');
-// });
+app.post('/students/register',(req,res)=>{
+    console.log(req.body);
+    let stringData=JSON.stringify(req.body);
+    let pathOfFile=path.join(__dirname,'..','data','students_details.json');
+    fs.writeFileSync(pathOfFile,stringData,'utf8');
+    res.send('login page');
+});
 
 app.listen(port,()=>{
     console.log(`Server is running on http://localhost:${port}`);
