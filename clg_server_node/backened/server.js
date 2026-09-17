@@ -1,8 +1,19 @@
 const http=require('http');
 const fs=require('fs');
+const path=require('path');
 const port=1300;
 
 const server=http.createServer((req,res)=>{
+
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+    if (req.method === 'OPTIONS') {
+        res.writeHead(204);
+        res.end();
+        return;
+    }
 
     let parts = req.url.split('/');
     if(req.url === '/' || req.url === '/home'){
@@ -26,43 +37,25 @@ const server=http.createServer((req,res)=>{
         res.setHeader('Content-Type','application/json');
         let data = fs.readFileSync(`../data/${course}.json`,'utf8');
         res.end(data);
-        // if(parts[2]==='bca'){
-        //     res.statusCode = 200;
-        //     res.setHeader('Content-Type','text/html');
-        //     let data = fs.readFileSync('../frontend/bca.html','utf8');
-        //     res.end(data);
-        // }else if(parts[2]==='bba'){
-        //     res.statusCode = 200;
-        //     res.setHeader('Content-Type','text/html');
-        //     let data = fs.readFileSync('../frontend/bba.html','utf8');
-        //     res.end(data);
-        // }
-        // else if(parts[2]==='btech'){
-        //     res.statusCode = 200;
-        //     res.setHeader('Content-Type','text/html');
-        //     let data = fs.readFileSync('../frontend/btech.html','utf8');
-        //     res.end(data);
-        // }
-        // else if(parts[2]==='ai'){
-        //     res.statusCode = 200;
-        //     res.setHeader('Content-Type','text/html');
-        //     let data = fs.readFileSync('../frontend/ai.html','utf8');
-        //     res.end(data);
-        // }
     }else if(req.url === '/students'){
         res.statusCode = 200;
         res.setHeader('Content-Type','application/json');
         let data = fs.readFileSync('../data/students.json','utf8');
         res.end(data);
     }else if(parts[1]==='students'){
-        if(parts[2]==='register' && req.method==='GET'){
-            res.statusCode = 200;
-            res.setHeader('Content-Type' ,'application/json');
-            let data = fs.readFileSync('../data/form.json','utf8');
-            res.end(data);
-        }else if(parts[2]==='register' && req.method==='POST'){
+        if(parts[2]==='register' && req.method==='POST'){
             res.statusCode=200;
-            console.log(req.data);
+            let data=' ';
+            req.on('data',(chunk)=>{
+                data += chunk;
+                console.log(data);
+            });
+            req.on('end',()=>{
+                let formattedJSON=JSON.parse(data);
+                let stringData = JSON.stringify(formattedJSON, null, 2);
+                const dataPath=path.join(__dirname,'..','data','students_details.json');
+                fs.writeFileSync(dataPath, stringData, 'utf8');
+            })
             res.end("Successfully registered");
         }
     }else if(req.url === '/contact'){
