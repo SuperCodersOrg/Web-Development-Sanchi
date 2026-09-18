@@ -51,10 +51,10 @@ const server=http.createServer((req,res)=>{
                 console.log(data);
             });
             req.on('end',()=>{
-                let formattedJSON=JSON.parse(data);
-                let stringData = JSON.stringify(formattedJSON, null, 2);
                 const dataPath=path.join(__dirname,'..','data','students_details.json');
-                fs.writeFileSync(dataPath, stringData, 'utf8');
+                let tasks=JSON.parse(fs.readFileSync(dataPath,'utf8'));
+                tasks.push(data);
+                fs.writeFileSync(dataPath, JSON.stringify(tasks), 'utf8');
             })
             res.end("Successfully registered");
         }
