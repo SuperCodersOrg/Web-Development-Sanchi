@@ -41,6 +41,34 @@ app.delete('/delete/:id',(req,res)=>{
     fs.writeFileSync(pathOfFile,JSON.stringify(tasks),'utf8');
 })
 
+app.patch('/patch/:id',(req,res)=>{
+    let pathOfFile=path.join(__dirname,'..','data','data.json');
+    let data=JSON.parse(fs.readFileSync(pathOfFile,'utf8'));
+    let id=Number(req.params.id);
+    data.forEach((task)=>{
+        if(task.id === id){
+            task.status = req.body.status;
+        }
+    });
+    fs.writeFileSync(pathOfFile,JSON.stringify(data),'utf8');
+    res.send(data);
+});
+
+app.put('/edit/:id',(req,res)=>{
+    console.log(req.body);
+    let id=Number(req.params.id);
+    let pathOfFile=path.join(__dirname,'..','data','data.json');
+    let data=JSON.parse(fs.readFileSync(pathOfFile,'utf8'));
+    data.forEach((item)=>{
+        if(item.id === id){
+            item.title = req.body.title;
+            item.description = req.body.description
+        }
+    });
+    fs.writeFileSync(pathOfFile,JSON.stringify(data),'utf8');
+    res.send(data);
+})
+
 app.listen(port,()=>{
     console.log(`Server is running on http://localhost:${port}`);
 });

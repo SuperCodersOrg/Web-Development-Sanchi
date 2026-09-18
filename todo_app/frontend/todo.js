@@ -26,185 +26,8 @@ inputBox.innerHTML = `
 let outputBox = document.getElementById("output-box");
 outputBox.classList = "mt-3 h-[500px] p-2 w-[600px] overflow-y-auto";
 
-// let tasks = getTaskFromLocalStorage();
-// buildTaskFromLocalStorage();
-
-// let editId = null;
-// let isEditing = false;
-
-// function buildTaskFromLocalStorage(){
-//     if(tasks.length === 0 ){
-//         return ;
-//     }
-//     for(let i=0;i<tasks.length;i++){
-//         completeTask(
-//             tasks[i].title,
-//             tasks[i].description,
-//             tasks[i].id,
-//             tasks[i].date,
-//             tasks[i].status
-//             );
-//     }
-// }
-
-// function addTask(){
-//     let titleBox = document.getElementById("title-box");
-//     let descriptionBox = document.getElementById("description-box");
-//     let titleValue = titleBox.value.trim();
-//     let descriptionValue = descriptionBox.value.trim();
-
-//     titleBox.value="";
-//     descriptionBox.value="";
-
-//     if(titleValue=="" || descriptionValue==""){
-//         Swal.fire({
-//             icon: "error",
-//             title: "Oops...",
-//             text: "Something is missing!",
-//           });
-//     }
-//     else{
-//         if(isEditing){
-//             let taskBox = document.getElementById(editId);
-    
-//             let childNodes = taskBox.children;
-//             childNodes[0].innerText = titleValue;
-//             childNodes[1].innerText = descriptionValue;
-    
-//             let addBtn = document.getElementById("btn");
-//             addBtn.innerText = "Add Task";
-//             addBtn.classList.remove("bg-green-500");
-//             addBtn.classList.add("bg-blue-400");
-//             isEditing=false;
-    
-//             tasks.forEach((task)=>{
-//                 if(task.id == editId){
-//                     task.title = titleValue;
-//                     task.description = descriptionValue;
-//                 }
-//             });
-//             // saveTaskInLocalStorage(tasks);
-//         }
-//         else{
-//         let id = new Date().getTime();
-//         let dateString = new Date().toLocaleString();
-//         let status = "pending";
-//         let isDeleted = false;
-    
-//         tasks.push({
-//             title:  titleValue,
-//             description: descriptionValue,
-//             id: id,
-//             status: status,
-//             date: dateString,
-//             delete_status: isDeleted
-//         });
-//         // saveTaskInLocalStorage(tasks);
-    
-//         completeTask(titleValue,descriptionValue,id,dateString,status);
-//     }
-// }
-// }
-
-// function completeTask(titleValue,descriptionValue,id,dateString,status){
-//     let newTask = document.createElement("div");
-//     let bgClass = status === "done" ? "bg-purple-300" : "bg-white";
-//     newTask.classList = `border rounded-xl flex flex-col gap-2 transition-all m-2 ${bgClass}`;
-//     newTask.id = id;
-//     let currentIcon = status === "done" ? icon2 : icon1;
-//     newTask.innerHTML = `
-//         <h1 class="bg-orange-100 mt-2 mb-1 ml-1 mr-1 rounded-md">${titleValue}</h1>
-//         <h2 class="bg-orange-100 m-1 rounded-md">${descriptionValue}</h2>
-//         <h2 class="bg-orange-100 m-1 rounded-md">${dateString}</h2>
-//         <div>
-//             <button class="rounded-md bg-red-400 p-1 m-2 border" onclick="deleteTask(${id})">${trashIcon}</button>
-//             <button class="doneBtn bg-green-500 rounded-md p-1 m-2 border" onclick="doneTask(${id})" data-status="${status}">${currentIcon}</button>
-//             <button class="edit-task-btn bg-yellow-500 rounded-md m-2 p-1 border" onclick="editTask(${id})">${editIcon}</button>
-//         </div>
-//     `;
-//  //   newTask.innerHTML = `
-//  //       <h1 class="bg-orange-100 m-2 rounded-md">${titleValue}</h1>
-//  //       <h2 class="bg-orange-100 m-2 rounded-md">${descriptionValue}</h2>
-//  //       <button onclick="deleteTask(${taskId})" class="bg-orange-100 m-2 rounded-md">Click to delete</button>
-//  //   `;
-//     outputBox.appendChild(newTask);
-// }
-
-// function deleteTask(id){
-//     let task = document.getElementById(id);
-//     if(task)
-//     task.remove();
-
-//     let taskData=tasks.find((t)=>{
-//        return t.id === id;
-//     })
-
-//     if(taskData){
-//         taskData.delete_status=true;
-//     }
-//     console.log(taskData.delete_status);
-
-//     // tasks = tasks.filter((t)=>t.id !== id)
-//     //     saveTaskInLocalStorage(tasks);
-// }
-
-// function doneTask(id){
-//     let task = document.getElementById(id);
-//     if(!task) return;
-
-//     let getTaskBtn = task.querySelector(".doneBtn");
-//     let isDone = getTaskBtn.getAttribute("data-status") === "done";
-//     let newStatus = isDone ? "pending" : "done";
-
-//     if(newStatus === "done"){
-//         getTaskBtn.innerHTML = icon2;
-//         getTaskBtn.setAttribute("data-status","done");
-//     }
-//     else{
-//         getTaskBtn.innerHTML = icon1;
-//         getTaskBtn.setAttribute("data-status","pending");
-//     }
-//    // task.classList.toggle("bg-purple-300");
-
-//     // let taskData = tasks.find((t)=>t.id === id);
-//     //     if(taskData){
-//     //         taskData.status = newStatus;
-//     //         saveTaskInLocalStorage(tasks);
-//     //     }
-// }
-
-// function editTask(id){
-//     let newTask = tasks.find((t)=>t.id == id);
-//     editId = id;
-//     isEditing = true;
-
-//     let titleBox = document.getElementById("title-box");
-//     let descriptionBox = document.getElementById("description-box"); 
-
-//     titleBox.value = newTask.title;
-//     descriptionBox.value = newTask.description;
-
-//     let btn = document.getElementById("btn");
-//     btn.innerText = "Edit Task";
-//     btn.classList.remove("bg-blue-400");
-//     btn.classList.add("bg-green-500");
-// }
-
-// function saveTaskInLocalStorage(tasks){
-//     localStorage.setItem("tasks", JSON.stringify(tasks));
-// }
-
-// function getTaskFromLocalStorage(){
-//     let taskString = localStorage.getItem("tasks");
-//     if(taskString){
-//         return JSON.parse(taskString);
-//     }
-//     return [];
-// }
-
 getData();
 
-// post 
 function addTask(){
     let titleBox = document.getElementById("title-box");
     let descriptionBox = document.getElementById("description-box");
@@ -248,7 +71,6 @@ function addTask(){
     getData();
 }
 
-//get
 function getData(){
     fetch(`http://localhost:${port}/get`)
     .then((res)=>{ 
@@ -278,29 +100,85 @@ function getData(){
             `;
             outputBox.appendChild(newTask);
             }
-            // let newTask = document.createElement("div");
-            // let bgClass = (item.status) === "done" ? "bg-purple-300" : "bg-white";
-            // newTask.classList = `border rounded-xl flex flex-col gap-2 transition-all m-2 ${bgClass}`;
-            // newTask.id = item.id;
-            // let currentIcon = (item.status) === "done" ? icon2 : icon1;
-            // newTask.innerHTML = `
-            //     <h1 class="bg-orange-100 mt-2 mb-1 ml-1 mr-1 rounded-md">${item.title}</h1>
-            //     <h2 class="bg-orange-100 m-1 rounded-md">${item.description}</h2>
-            //     <h2 class="bg-orange-100 m-1 rounded-md">${item.date}</h2>
-            //     <div>
-            //         <button class="rounded-md bg-red-400 p-1 m-2 border" onclick="deleteTask(${item.id})">${trashIcon}</button>
-            //         <button class="doneBtn bg-green-500 rounded-md p-1 m-2 border" onclick="doneTask(${item.id})" data-status="${item.status}">${currentIcon}</button>
-            //         <button class="edit-task-btn bg-yellow-500 rounded-md m-2 p-1 border" onclick="editTask(${item.id})">${editIcon}</button>
-            //     </div>
-            // `;
-            // outputBox.appendChild(newTask);
         })
     });
 }
 
-//delete
 function deleteTask(id){
     fetch(`http://localhost:${port}/delete/${id}`,{
         method : 'DELETE'   
+    });
+}
+
+function editTask(id){
+    fetch(`http://localhost:${port}/get`)
+    .then((res)=>{
+        if(!res.ok){
+            return;
+        }
+        return res.json();
+    }).then((data)=>{
+        let task=data.find((item)=>{
+            if(item.id === id){
+                return item;
+            }
+        });
+
+        let titleBox=document.getElementById("title-box");
+        let descriptionBox=document.getElementById("description-box");
+        titleBox.value=task.title;
+        descriptionBox.value=task.description;
+
+        let addBtn=document.getElementById("btn");
+        addBtn.innerText="Edit Task";
+
+        addBtn.onclick=function(){
+            let updatedTitle=titleBox.value;
+            let updatedDesc=descriptionBox.value;
+
+            fetch(`http://localhost:${port}/edit/${id}`,{
+                method : 'PUT',
+                headers : {
+                    'Content-Type':'application/json'
+                },
+                body : JSON.stringify(
+                    {
+                        title : updatedTitle,
+                        description : updatedDesc
+                    }
+                )
+            }).then((res)=>{
+                return res.json();
+            }).then((data)=>{
+                getData();
+            })
+        };
+    })
+    
+}
+
+function doneTask(id){
+    let task = document.getElementById(id);
+    let btn = task.querySelector(".doneBtn");
+
+    let currentStatus = btn.getAttribute("data-status");
+
+    let newStatus = (currentStatus==="pending") ? "done" : "pending";
+
+    fetch(`http://localhost:${port}/patch/${id}`,{
+        method : 'PATCH',
+        headers : {
+            'Content-Type' : 'application/json'
+        },
+        body : JSON.stringify({
+            status : newStatus
+        })
+    }).then((res)=>{
+        if(!res.ok){
+            return;
+        }
+        return res.json();
+    }).then((data)=>{
+        getData();
     });
 }
