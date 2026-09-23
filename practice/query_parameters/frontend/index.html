@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="maxPrice"/>
+    <select id="category">
+        <option value="all">all</option>
+        <option value="mobile">mobile</option>
+        <option value="laptop">laptop</option>
+    </select>
+    <button type="submit" onclik="load()"></button>
+    <div id="product"></div>
+
+    <script>
+        function load(){
+            let maxPrice=document.getElementById("maxPrice");
+        let category=document.getElementById("category");
+        let submit=document.getElementById("submit");
+            let Max=maxPrice.value;
+            let Category=category.value;
+
+        const query = new URLSearchParams();
+
+        if(category){
+            query.set("category",category);
+        }
+        if(maxPrice){
+            query.set("maxPrice",maxPrice);
+        }
+
+        const response=fetch(`http://localhost:2000/products?${query}`);
+        const products=response.json();
+        console.log(products);
+        }
+        
+
+    </script>
+
+</body>
+</html>
