@@ -2,9 +2,10 @@ const express=require('express');
 const app=express();
 const session=require('express-session');
 const router=express.Router();
+const path=require('path');
 
 router.use(express.static("../public"));
-app.use(express.urlencoded({ extended: true }));
+router.use(express.urlencoded({ extended: true }));
 
 const isAuthenticated = (req,res,next)=>{
     if(req.session && req.session.user){
@@ -15,7 +16,7 @@ const isAuthenticated = (req,res,next)=>{
 
 const users = {
     student : { name : "ajay" ,role : "student" , password : "1234" },
-    teaxher : { name : "prachi" , role : "teacher" , password : "3447" }
+    teacher : { name : "prachi" , role : "teacher" , password : "3447" }
 }
 
 router.get('/login',(req,res)=>{
@@ -37,9 +38,11 @@ router.post('/signin',(req,res)=>{
 
     if(users.student.name === name){
         return res.send("User already exists");
+    }else if(users.teacher.name === name){
+        return res.send("User already exists");
     }
 
-    users[name] = {
+    users[role] = {
         name,
         password,
         role
@@ -51,12 +54,7 @@ router.post('/signin',(req,res)=>{
     }
 
     res.redirect('/login');
-    // if(role == 'student'){
-    //     return res.redirect('/student/info');
-    // }
-    // else{
-    //     return res.redirect('/teacher/info');
-    // }
+
 });
 
 router.post('/login',(req,res)=>{
@@ -88,7 +86,7 @@ router.post('/login',(req,res)=>{
 
 router.get('/logout',(req,res)=>{
     req.session.destroy(()=>{
-        res.redirect('./public/index.html');
+        res.sendFile(path.join(__dirname,'..','public','index.html'))
     });
 });
 

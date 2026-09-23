@@ -28,7 +28,7 @@ app.get('/',(req,res)=>{
 
 app.use(authRoutes);
 app.use('/',studentsRoutes);
-app.use('/teacher',teachersRoutes);
+app.use('/',teachersRoutes);
 
 app.listen(3300,()=>{
     console.log("server is running");
