@@ -1,33 +1,29 @@
 const express=require('express');
 const router=express.Router();
+const path=require('path');
 const app=express();
 
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, '..' , 'public')));
+app.use(express.urlencoded({ extended: true }));
 
-const islogged=(req,res,next)=>{
-    if(req.session.user){
-        next();
-    }
-    else{
-        res.redirect('../frontend/login.html');
-    }
-}
+router.get('/student/profile',(req,res)=>{
+    if(req.session.role != 'student')
+        return res.redirect('/teacher/profile');
+    res.redirect('../public/studentprofile.html');
+})
 
-// router.get('/',islogged,(req,res)=>{
-//     res.send("students portal");
-// })
-
-// router.get('/about',(req,res)=>{
-//     res.send("about");
-// })
-
-// router.get('/result',(req,res)=>{
-//     res.send("students result");
-// })
-
-router.get('/info',islogged,(req,res)=>{
+router.get('/student/info',(req,res)=>{
+    console.log(req.session);
+    console.log(req.session.user.role);
+    if('student' == 'student')
+        // res.redirect('./studentinfo.html');
     res.redirect('../public/studentinfo.html');
 });
 
+router.get('/student/result',(req,res)=>{
+    if(req.session.role != 'student')
+        return res.redirect('/teacher/timetable');
+    res.redirect('../public/result/.html');
+});
 
 module.exports=router;
