@@ -9,6 +9,7 @@ router.use(express.urlencoded({ extended: true }));
 
 const isAuthenticated = (req,res,next)=>{
     if(req.session && req.session.user){
+        console.log("click");
         return next();
     }
     return res.redirect("./login.html");
@@ -69,10 +70,15 @@ router.post('/login',(req,res)=>{
         res.send(`Wrong details <a href="/signin">Login again</a>`)
     }
 
-    req.session.user = {
-        name,
-        role: user.role
-    };
+    if(users.student.password !== name.password || users.teacher.password !== name.password){
+        res.send('User not exists');
+    }else{
+        req.session.user = {
+            name,
+            role: user.role
+        };
+    }
+
     
     console.log(user.role);
 

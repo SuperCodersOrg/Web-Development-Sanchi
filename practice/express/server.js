@@ -4,7 +4,7 @@ const app=express();
 
 const studentsRoutes=require('./routes/students');
 const teachersRoutes=require('./routes/teachers');
-const { router : authRoutes , authentication } =require('./auth');
+const { router : authRoutes , isAuthenticated } =require('./auth');
 
 app.use(express.json());
 app.use(express.static('public'));
@@ -27,6 +27,7 @@ app.get('/',(req,res)=>{
 })
 
 app.use(authRoutes);
+app.use(isAuthenticated);
 app.use('/',studentsRoutes);
 app.use('/',teachersRoutes);
 
