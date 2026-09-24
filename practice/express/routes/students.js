@@ -9,25 +9,18 @@ router.use(express.urlencoded({ extended: true }));
 
 router.get('/student/profile',(req,res)=>{
     if(req.session.user.role == 'student')
-    res.sendFile(path.join(__dirname,'..','public','studentprofile.html'));
-    //     return res.redirect('/teacher/profile');
-    // res.redirect('../public/studentprofile.html');
+    res.redirect('/studentprofile.html');
 })
 
 router.get('/student/info',(req,res)=>{
     console.log(req.session);
     console.log(req.session.user.role);
-    if(req.session.user.role == 'student')
-        // res.redirect('./studentinfo.html');
-    res.sendFile(path.join(__dirname,'..','public','studentinfo.html'));
-    // res.redirect('../public/studentinfo.html');
+    res.redirect('/studentinfo.html');
 });
 
 router.get('/student/result',(req,res)=>{
     if(req.session.user.role == 'student')
-        res.sendFile(path.join(__dirname,'..','public','result.html'));
-    //     return res.redirect('/teacher/timetable');
-    // res.redirect('../public/result/.html');
+    res.redirect('/result.html');
 });
 
 module.exports=router;

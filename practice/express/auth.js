@@ -86,7 +86,7 @@ router.post('/login',(req,res)=>{
 
 router.get('/logout',(req,res)=>{
     req.session.destroy(()=>{
-        res.sendFile(path.join(__dirname,'..','public','index.html'))
+        res.redirect('/index.html');
     });
 });
 
