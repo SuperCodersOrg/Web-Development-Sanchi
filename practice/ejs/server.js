@@ -12,6 +12,10 @@ app.get('/about',(req,res)=>{
     res.render("about" , { title : "About Page"});
 });
 
+app.get('/contact',(req,res)=>{
+    res.render("contact" , { title : "Contact Page"});
+});
+
 app.listen(2000,()=>{
     console.log("Server is running on http://localhost:2000");
 });
