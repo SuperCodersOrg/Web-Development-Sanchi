@@ -8,14 +8,26 @@ app.use(express.json());
 app.use(express.urlencoded({ extended : true }));
 app.use("/uploads",express.static('file_uploads'));
 
-app.get('/profile',(req,res)=>{
+app.get('/',(req,res)=>{
     res.render("form", { uploaded : "" });
 });
 
-app.post('/profile',upload.single('profile-img'),(req,res)=>{
+// app.post('/profile',upload.single('profile-img'),(req,res)=>{
+//     console.log(req.body);
+//     console.log(req.file);
+//     res.render("form", { uploaded : req.file.filename });
+// });
+
+app.post('/profile',upload.array('profile-img',4),(req,res)=>{
     console.log(req.body);
-    console.log(req.file);
-    res.render("form", { uploaded : req.file.filename });
+    console.log(req.files);
+    req.files.forEach((element)=>{
+        res.render("form", { uploaded : element.filename });
+    })
+    // res.render("form", { uploaded : req.files.forEach(element => {
+    //         return element;
+    //     })
+    // });
 });
 
 app.listen(2340,()=>{
