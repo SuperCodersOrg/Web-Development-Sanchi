@@ -7,6 +7,8 @@
     </form>
 
     <% if(uploaded) { %>
-        <img src="/uploads/<%= uploaded %>" width="500px" height="600px"/>
+        <% uploaded.forEach((element)=>{ %>
+            <img src="/uploads/<%= element %>" width="400px" height="300px" margin="10px"/>
+        <% }) %>
     <% } %>
 </body>
