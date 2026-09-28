@@ -1,0 +1,12 @@
+<body>
+    <form method="POST" action="/profile" enctype="multipart/form-data">
+        <input type="text" name="name" placeholder="Enter your name"/>
+        <input type="email" name="email" placeholder="Enter your email"/>
+        <input type="file" name="profile-img"/>
+        <button type="submit">Submit</button>
+    </form>
+
+    <% if(uploaded) { %>
+        <img src="/uploads/<%= uploaded %>" width="500px" height="600px"/>
+    <% } %>
+</body>
