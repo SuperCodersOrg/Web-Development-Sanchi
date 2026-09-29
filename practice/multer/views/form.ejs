@@ -2,12 +2,17 @@
     <form method="POST" action="/profile" enctype="multipart/form-data">
         <input type="text" name="name" placeholder="Enter your name"/>
         <input type="email" name="email" placeholder="Enter your email"/>
-        <input type="file" name="profile-img" multiple/>
+        <input type="file" name="profile" multiple/>
+        <input type="file" name="avatar"/>
         <button type="submit">Submit</button>
     </form>
 
-    <% if(uploaded) { %>
-        <% uploaded.forEach((element)=>{ %>
+    <% if(avatar) { %>
+        <img src="/uploads/<%= avatar %>" width="400px" height="300px" margin="10px"/>
+    <% } %>
+
+    <% if(profile) { %>
+        <% profile.forEach((element)=>{ %>
             <img src="/uploads/<%= element %>" width="400px" height="300px" margin="10px"/>
         <% }) %>
     <% } %>
