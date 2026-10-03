@@ -1,0 +1,22 @@
+{
+    "users": [
+        {
+            "name": "ajay",
+            "email": "ajay@gmail.com",
+            "role": "student",
+            "password": "0985"
+        },
+        {
+            "name": "prachi",
+            "email": "prachi@gmail.com",
+            "role": "teacher",
+            "password": "3447"
+        },
+        {
+            "name": "priya",
+            "email": "priya@gmail.com",
+            "password": "3231",
+            "role": "teacher"
+        }
+    ]
+}

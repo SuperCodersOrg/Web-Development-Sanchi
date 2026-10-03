@@ -1,0 +1,24 @@
+{
+    "users": [
+        {
+            "name": "ajay",
+            "email": "ajay@gmail.com",
+            "role": "student",
+            "password": "1234",
+            "resetToken": "86635c2cc992739e94a6fe0f8e72a8611470a3657132ff19838a498d80607cf3",
+            "tokenExpiresAt": 1791057407315
+        },
+        {
+            "name": "prachi",
+            "email": "prachi@gmail.com",
+            "role": "teacher",
+            "password": "3447"
+        },
+        {
+            "name": "priya",
+            "email": "priya@gmail.com",
+            "password": "3231",
+            "role": "teacher"
+        }
+    ]
+}

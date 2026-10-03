@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="resetForm" method="POST">
+        <input type="password" name="newPassword" placeholder="Enter new password"/>
+        <input type="password" name="confirmPassword" placeholder="Confirm new password"/>
+        <button type="submit">Reset password</button>
+    </form>
+    <script>
+        const token = window.location.pathname.split('/').pop();
+        document.getElementById('resetForm').action = `/reset-password/${token}`;
+    </script>
+</body>
+</html>

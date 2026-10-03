@@ -17,7 +17,7 @@ router.get('/teacher/profile',(req,res)=>{
 })
 
 router.get('/teacher/timetable',(req,res)=>{ 
-    if(req.session.role == 'teacher')
+    if(req.session.user.role == 'teacher')
     res.redirect('/timetable.html');
 })
 
