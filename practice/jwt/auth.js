@@ -3,11 +3,41 @@ const router = express.Router();
 const jwt = require('jsonwebtoken');
 const fs = require('fs');
 const cors = require('cors');
+const cookie_parser = require('cookie-parser');
 
+router.use(cookie_parser());
 router.use(cors());
 router.use(express.json());
 router.use(express.urlencoded({ extended : true }));
 router.use(express.static('public'));
+
+const ACCESS_TOKEN = 'access_token';
+const REFRESH_TOKEN  = 'refresh_token';
+
+const authenticate = ((req,res,next)=>{
+    const token = req.cookies.accessToken;
+    console.log(token);
+
+    if(!token){
+        return res.send("Can't find token");
+    }
+
+    try{
+        const verified = jwt.verify(token,ACCESS_TOKEN);
+        const decoded = jwt.decode(token);
+        console.log(decoded);
+        req.user = verified;
+        next();
+    }
+    catch(error){
+        res.send(error);
+    }
+
+});
+
+router.get('/profile',authenticate,(req,res)=>{
+    return res.redirect('./profile.html');
+});
 
 router.get('/login',(req,res)=>{
     return res.redirect('./login.html');
@@ -28,15 +58,25 @@ router.post('/login',(req,res)=>{
         return res.send("User with the given details couldn't found");
     }
 
-    const token = jwt.sign(
+    const accessToken = jwt.sign(
         { name : user.name , email : user.email },
-        'secretkey',
+        ACCESS_TOKEN,
         // { expiresIn : '2h' }
     );
 
-    console.log(token);
-    res.json({ token });
+    const refreshToken = jwt.sign(
+        { name : user.name , email : user.email },
+        REFRESH_TOKEN,
+        // { expiresIn : '7d' }
+    );
 
+    console.log(accessToken);
+    console.log(refreshToken);
+
+    res.cookie('accessToken',accessToken);
+    res.cookie('refreshToken',refreshToken);
+
+    res.send('Token generated successfully');
 });
 
 router.post('/signin',(req,res)=>{
