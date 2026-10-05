@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Ridhan Verma",
+        "email": "ridhu@gmail.com",
+        "password": "9312-038",
+        "role": "student"
+    },
+    {
+        "name": "Sanchi Bareja",
+        "email": "sanchibareja@gmail.com",
+        "password": "675894032",
+        "role": "student"
+    },
+    {
+        "name": "Mihika",
+        "email": "mikku@gmail.com",
+        "password": "7943-121",
+        "role": "student"
+    },
+    {
+        "name": "Rishabh",
+        "email": "rishabhaneja@gmai.com",
+        "password": "831092021",
+        "role": "student"
+    },
+    {
+        "name": "Qeona",
+        "email": "queenaaa@gmail.com",
+        "password": "876548765",
+        "role": "student"
+    }
+]
