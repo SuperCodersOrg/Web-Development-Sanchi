@@ -27,10 +27,11 @@ const authenticate = ((req,res,next)=>{
         const verified = jwt.verify(token,process.env.ACCESS_TOKEN);
         const decoded = jwt.decode(token);
         console.log(decoded);
-        req.user = verified;        
+        req.user = verified;
+        next();           
     }
     catch(error){
-        console.log(error);
+        res.redirect('/refresh');
     }
 });
 
@@ -58,6 +59,7 @@ router.get('/refresh',(req,res)=>{
 
         console.log("New token :",accessToken);
         res.cookie('accessToken',accessToken);
+        res.send('Access token generated');
     }
     catch(error) {
         console.log("server side");
