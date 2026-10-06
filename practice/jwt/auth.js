@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const fs = require('fs');
 const cors = require('cors');
 const cookie_parser = require('cookie-parser');
+require('dotenv').config();
 
 router.use(cookie_parser());
 router.use(cors());
@@ -11,32 +12,57 @@ router.use(express.json());
 router.use(express.urlencoded({ extended : true }));
 router.use(express.static('public'));
 
-const ACCESS_TOKEN = 'access_token';
-const REFRESH_TOKEN  = 'refresh_token';
+// const ACCESS_TOKEN = 'access_token';
+// const REFRESH_TOKEN  = 'refresh_token';
 
 const authenticate = ((req,res,next)=>{
     const token = req.cookies.accessToken;
-    console.log(token);
+    // console.log(token);
 
     if(!token){
         return res.send("Can't find token");
     }
 
     try{
-        const verified = jwt.verify(token,ACCESS_TOKEN);
+        const verified = jwt.verify(token,process.env.ACCESS_TOKEN);
         const decoded = jwt.decode(token);
         console.log(decoded);
-        req.user = verified;
-        next();
+        req.user = verified;        
     }
     catch(error){
-        res.send(error);
+        console.log(error);
     }
-
 });
 
 router.get('/profile',authenticate,(req,res)=>{
     return res.redirect('./profile.html');
+});
+
+router.get('/refresh',(req,res)=>{
+    const refreshToken = req.cookies.refreshToken;
+    // console.log(refreshToken);
+    if(!refreshToken){
+        console.log("cookie side");
+        return res.status(401).send('Invalid token');
+    }
+
+    try {
+        const decoded = jwt.verify(refreshToken,process.env.REFRESH_TOKEN);
+        console.log("Decoded : ",decoded);
+
+        let accessToken = jwt.sign(
+            { name : decoded.name , email : decoded.email },
+            process.env.ACCESS_TOKEN,
+            { expiresIn : '20s' }
+        );
+
+        console.log("New token :",accessToken);
+        res.cookie('accessToken',accessToken);
+    }
+    catch(error) {
+        console.log("server side");
+        res.status(401).send('Invalid token');
+    }
 });
 
 router.get('/login',(req,res)=>{
@@ -60,18 +86,18 @@ router.post('/login',(req,res)=>{
 
     const accessToken = jwt.sign(
         { name : user.name , email : user.email },
-        ACCESS_TOKEN,
-        // { expiresIn : '2h' }
+        process.env.ACCESS_TOKEN,
+        { expiresIn : '20s' }
     );
 
     const refreshToken = jwt.sign(
         { name : user.name , email : user.email },
-        REFRESH_TOKEN,
-        // { expiresIn : '7d' }
+        process.env.REFRESH_TOKEN,
+        { expiresIn : '60s' }
     );
 
-    console.log(accessToken);
-    console.log(refreshToken);
+    // console.log(accessToken);
+    // console.log(refreshToken);
 
     res.cookie('accessToken',accessToken);
     res.cookie('refreshToken',refreshToken);
