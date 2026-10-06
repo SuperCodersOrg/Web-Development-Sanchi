@@ -4,7 +4,7 @@
             "name": "ajay",
             "email": "ajay@gmail.com",
             "role": "student",
-            "password": "0985"
+            "password": "8765"
         },
         {
             "name": "prachi",
@@ -17,6 +17,12 @@
             "email": "priya@gmail.com",
             "password": "3231",
             "role": "teacher"
+        },
+        {
+            "name": "Mehak",
+            "email": "mehak733@gmail.com",
+            "password": "4628e3",
+            "role": "student"
         }
     ]
 }
